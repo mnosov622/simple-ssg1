@@ -15,12 +15,7 @@ const homepage = posts => `
     <body>
         <div class="grotesk">
             <header>
-                <h1>${config.blogName}</h1>
-                <p>—</p>
-                <p>This blog is written by <a href="${config.authorWebsite}">${
-  config.authorName
-}</a>, ${config.authorDescription}.</p>
-                <hr />
+               
             </header>
             
             <div class="posts">
@@ -40,9 +35,7 @@ const homepage = posts => `
             </div>
 
             <footer>
-              ${`<p>© ${new Date().getFullYear()} ${
-                config.authorName
-              }, Find the code on <a href="https://github.com/kartiknair/blog">GitHub</a></p>`}
+             
             </footer>
         </div>
     </body>

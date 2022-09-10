@@ -10,9 +10,11 @@ const posthtml = data => `
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${data.attributes.description}" />
-        <link rel="stylesheet" href="../assets/styles/grotesk.light.min.css">
-        <link rel="stylesheet" href="../assets/styles/highlights.min.css">
-        <link rel="stylesheet" href="../assets/styles/main.min.css">
+        <link rel="stylesheet" href = "../../src/assets/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
         <title>${data.attributes.title}</title>
     </head>
     <body>
@@ -31,18 +33,13 @@ const posthtml = data => `
                 ${data.body}
             </div>
 
-            <footer>
-                ${`<p>© ${new Date().getFullYear()} ${
-                  config.authorName
-                }, Find the code on <a href="github.com/kartiknair/blog">GitHub</a></p>`}
-            </footer>
         </div>
     </body>
 </html>
 `;
 
 const createPost = postPath => {
-  const data = fs.readFileSync(`${config.dev.postsdir}/${postPath}.md`, "utf8");
+  const data = fs.readFileSync(`${config.dev.postsdir}/${postPath}.txt`, "utf8");
   const content = fm(data);
   content.body = marked(content.body);
   content.path = postPath;
