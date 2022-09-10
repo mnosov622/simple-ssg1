@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "simple-ssg1" : "./src/index.js"
+  },
   "scripts": {
     "build": "node ./src/index.js"
+    
   },
   "keywords": [],
   "author": "",
