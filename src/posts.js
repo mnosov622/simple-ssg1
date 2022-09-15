@@ -3,6 +3,14 @@ const fm = require("front-matter");
 const fs = require("fs");
 const marked = require("./marked");
 
+fs.readFile('../blog/content/Silver-Blaze.txt', 'utf-8', (err, data) => {
+  if (err) throw err;
+
+  // Converting Raw Buffer to text
+  // data using tostring function.
+  // console.log(data.split(/\r?\n/));
+})
+
 const posthtml = data => `
 <!DOCTYPE html>
 <html lang="en">
@@ -14,20 +22,13 @@ const posthtml = data => `
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-        <title>${data.attributes.title}</title>
     </head>
     <body>
         <div class="grotesk">
             <header>
-                <a href="/">Go back home</a>
-                <p>—</p>
             </header>
 
             <div class="content">
-                <h1>${data.attributes.title}</h1>
-                <p>${new Date(
-                  parseInt(data.attributes.date)
-                ).toDateString()}</p>
                 <hr />
                 ${data.body}
             </div>
@@ -61,7 +62,22 @@ const createPosts = posts => {
   });
 };
 
+const createSingle = post => {
+  if (!fs.existsSync(`${config.dev.outdir}/${post.path}`))
+      fs.mkdirSync(`${config.dev.outdir}/${post.path}`);
+
+    fs.writeFile(
+      `${config.dev.outdir}/${post.path}/index.html`,
+      posthtml(post),
+      e => {
+        if (e) throw e;
+        console.log(`${post.path}/index.html was created successfully`);
+      }
+    );
+}
+
 module.exports = {
   createPost: createPost,
-  createPosts: createPosts
+  createPosts: createPosts,
+  createSingle: createSingle
 };
