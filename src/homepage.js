@@ -1,6 +1,17 @@
 const config = require("./config");
 const fs = require("fs");
 
+// ${posts
+//   .map(
+//     post => `<div class="post">
+//     <h3><a href="./${post.path}">${
+//       post.attributes.title
+//     }</a></h3>
+//       <p>${post.attributes.description}</p>
+//     </div>`
+//   )
+//   .join("")}
+
 const homepage = posts => `
 <!DOCTYPE html>
 <html lang="en">
@@ -21,19 +32,11 @@ const homepage = posts => `
             </header>
             
             <div class="posts">
-                ${posts
-                  .map(
-                    post => `<div class="post">
-                    <h3><a href="./${post.path}">${
-                      post.attributes.title
-                    }</a></h3>
-                        <small>${new Date(
-                          parseInt(post.attributes.date)
-                        ).toDateString()}</small>
-                      <p>${post.attributes.description}</p>
-                    </div>`
-                  )
-                  .join("")}
+                <a href = '../dist/naval-treaty/index.html'/>
+                <a href = '../dist/red-headed-league/index.html'/>
+                <a href = '../dist/silver-blaze/index.html'/>
+                <a href = '../dist/six-neapolis/index.html'/>
+                <a href = '../dist/speckled-band/index.html'/>
             </div>
 
             <footer>

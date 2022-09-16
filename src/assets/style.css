@@ -11,3 +11,15 @@ body {
     margin: 0 auto;
     padding: 0 15px;
 }
+
+.posts {
+    background-color: aliceblue;
+}
+
+.posts > * {
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    text-decoration: none;
+    width: 100%;
+}

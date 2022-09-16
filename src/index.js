@@ -22,7 +22,7 @@ args.forEach(arg => {
     console.log('\x1b[36m%s\x1b[0m', 'simple-ssg1\nVersion 1.0');
   }
 
-  else if(arg === './content'){
+  else if(arg.toLowerCase() === './content'){
     
     if (!fs.existsSync(config.dev.outdir)) fs.mkdirSync(config.dev.outdir);
     
@@ -30,8 +30,29 @@ args.forEach(arg => {
     addHomePage(posts);
   }
 
-  else if(arg === 'silver-blaze' ){
+  else if(arg.toLowerCase() === 'naval-treaty' ) {
     if (!fs.existsSync(config.dev.outdir)) fs.mkdirSync(config.dev.outdir);
     postMethods.createSingle(posts[0]);
+  }
+
+  else if(arg.toLowerCase() === 'red-headed-league' ) {
+    if (!fs.existsSync(config.dev.outdir)) fs.mkdirSync(config.dev.outdir);
+    postMethods.createSingle(posts[1]);
+  }
+
+  else if(arg.toLowerCase() === 'silver-blaze' ) {
+    if (!fs.existsSync(config.dev.outdir)) fs.mkdirSync(config.dev.outdir);
+    postMethods.createSingle(posts[2]);
+  }
+
+  else if(arg.toLowerCase() === 'six-napoleans' ) {
+    if (!fs.existsSync(config.dev.outdir)) fs.mkdirSync(config.dev.outdir);
+    postMethods.createSingle(posts[3]);
+  }
+
+  else if(arg.toLowerCase() === 'speckled-band' ) {
+   
+    if (!fs.existsSync(config.dev.outdir)) fs.mkdirSync(config.dev.outdir);
+    postMethods.createSingle(posts[4]);
   }
 })
