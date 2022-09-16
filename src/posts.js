@@ -3,7 +3,7 @@ const fm = require("front-matter");
 const fs = require("fs");
 const marked = require("./marked");
 
-fs.readFile('../blog/content/Silver-Blaze.txt', 'utf-8', (err, data) => {
+fs.readFile('../content/silver-blaze.txt', 'utf-8', (err, data) => {
   if (err) throw err;
 
   // Converting Raw Buffer to text
