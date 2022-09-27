@@ -11,9 +11,53 @@ fs.readFile('../content/silver-blaze.txt', 'utf-8', (err, data) => {
   // console.log(data.split(/\r?\n/));
 })
 
+const args = process.argv;
+
+//default is english
+let lang = 'en';
+
+args.forEach(arg => {
+      if(arg === 'fr') {
+        lang = 'fr';
+      }
+      
+      else if (arg === 'pt-BR') {
+        lang = 'pt-BR';
+      }
+      
+      else if (arg === 'ru') {
+        lang = 'ru';
+      }
+
+      else if (arg === 'uk') {
+        lang = 'uk';
+      }
+
+      else if (arg === 'en-GB') {
+        lang = 'en-GB';
+      }
+
+      else if (arg === 'de') {
+        lang = 'de';
+      }
+
+      else if (arg === 'es') {
+        lang = 'es';
+      }
+
+      else if (arg === 'ja') {
+        lang = 'ja';
+      }
+
+      else if (arg === 'ko') {
+        lang = 'ko';
+      }
+})
+
+
 const posthtml = data => `
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${lang}">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
