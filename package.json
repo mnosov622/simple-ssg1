@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "simple-ssg1" : "./src/index.js"
+    "simple-ssg1": "./src/index.js"
   },
   "scripts": {
     "build": "node ./src/index.js"
-    
   },
   "keywords": [],
   "author": "",
@@ -16,6 +15,7 @@
   "dependencies": {
     "front-matter": "^3.2.1",
     "highlight.js": "^9.18.5",
-    "marked": "^0.8.2"
+    "marked": "^0.8.2",
+    "minimist": "^1.2.6"
   }
 }

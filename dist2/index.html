@@ -1,31 +1,15 @@
-const configModule = require("./config");
-const config = configModule.config;
-const fs = require("fs");
-//const postMethods = require("./posts");
 
-// ${posts
-//   .map(
-//     post => `<div class="post">
-//     <h3><a href="./${post.path}">${
-//       post.attributes.title
-//     }</a></h3>
-//       <p>${post.attributes.description}</p>
-//     </div>`
-//   )
-//   .join("")}
-
-const homepage = posts => `
 <!DOCTYPE html>
-<html lang="${config.dev.lang}">
+<html lang="ru">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href = "../../src/assets/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="${config.dev.stylesheet}" rel="stylesheet">
+        <link href="justALink" rel="stylesheet">
         
-        <title>${config.blogName}</title>
+        <title>undefined</title>
     </head>
     <body>
         <div class="grotesk">
@@ -47,13 +31,3 @@ const homepage = posts => `
         </div>
     </body>
 </html>
-`;
-
-const addHomePage = posts => {
-  fs.writeFile(`${config.dev.outdir}/index.html`, homepage(posts), e => {
-    if (e) throw e;
-    console.log(`index.html was created successfully`);
-  });
-};
-
-module.exports = addHomePage;
