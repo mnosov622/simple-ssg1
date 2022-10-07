@@ -1,0 +1,8 @@
+{
+  "postsdir": "./content2",
+  "inputPath":"naval-treaty.txt",
+  "outdir": "./dist2",
+  "lang": "ru",
+  "stylesheet": "justALink",
+  "future-feature": "ignore for now"
+}

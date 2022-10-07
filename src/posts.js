@@ -3,7 +3,7 @@ const fm = require("front-matter");
 const fs = require("fs");
 const marked = require("./marked");
 
-fs.readFile('../content/silver-blaze.txt', 'utf-8', (err, data) => {
+fs.readFile('./content/silver-blaze.txt', 'utf-8', (err, data) => {
   if (err) throw err;
 
   // Converting Raw Buffer to text
@@ -14,7 +14,8 @@ fs.readFile('../content/silver-blaze.txt', 'utf-8', (err, data) => {
 const args = process.argv;
 
 //default is english
-let lang = 'en';
+let lang = config.dev.lang;
+let stylesheet=config.dev.stylesheet;
 
 args.forEach(arg => {
       if(arg === 'fr') {
@@ -64,7 +65,7 @@ const posthtml = data => `
         <link rel="stylesheet" href = "../../src/assets/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link href="${stylesheet}" rel="stylesheet">
 
     </head>
     <body>
