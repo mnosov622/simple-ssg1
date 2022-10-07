@@ -1,4 +1,5 @@
-const config = require("./config");
+const configModule = require("./config");
+const config = configModule.config;
 const fm = require("front-matter");
 const fs = require("fs");
 const marked = require("./marked");
@@ -143,6 +144,4 @@ module.exports = {
   createPost: createPost,
   createPosts: createPosts,
   createSingle: createSingle,
-  setStyle:setStyle,
-  setLang:setLang
 };

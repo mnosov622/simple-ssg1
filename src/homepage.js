@@ -1,4 +1,5 @@
-const config = require("./config");
+const configModule = require("./config");
+const config = configModule.config;
 const fs = require("fs");
 //const postMethods = require("./posts");
 
