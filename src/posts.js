@@ -3,13 +3,13 @@ const fm = require("front-matter");
 const fs = require("fs");
 const marked = require("./marked");
 
-fs.readFile('./content/silver-blaze.txt', 'utf-8', (err, data) => {
-  if (err) throw err;
+// fs.readFile('../content/silver-blaze.txt', 'utf-8', (err, data) => {
+//   if (err) throw err;
 
-  // Converting Raw Buffer to text
-  // data using tostring function.
-  // console.log(data.split(/\r?\n/));
-})
+//   // Converting Raw Buffer to text
+//   // data using tostring function.
+//   // console.log(data.split(/\r?\n/));
+// })
 
 var args = process.argv;
 
