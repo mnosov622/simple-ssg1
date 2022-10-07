@@ -10,6 +10,11 @@ const addHomePage = require("./homepage");
 
 const minArgv = require('minimist')(process.argv.slice(2));
 
+//chelc if it's just null or whitespace
+function isNullOrWhitespace( input ) {
+  return !input || !input.trim();
+}
+
 //if config JSON file exist, save the content to config module
 if(minArgv.config || minArgv.c){
   let argvConfig=minArgv.config || minArgv.c;
@@ -18,15 +23,23 @@ if(minArgv.config || minArgv.c){
     return 0;
   }
   
+  //read the parse the config file
   const configString = fs.readFileSync(argvConfig).toString();
   try { 
-    config.dev = JSON.parse(configString);
+    var temptConfig = JSON.parse(configString);
   }catch(err) {
     console.log("Please make sure the JSON file is valid. Encountered an issue: "+err);
     return 0;
   }
   
-  var configFile=true;
+  //checking if each option exist from the config file before assiging to confgi module
+  if(!isNullOrWhitespace(temptConfig.postsdir)) config.dev.postsdir = temptConfig.postsdir;
+  if(!isNullOrWhitespace(temptConfig.inputPath)) config.dev.inputPath = temptConfig.inputPath;
+  if(!isNullOrWhitespace(temptConfig.outdir)) config.dev.outdir = temptConfig.outdir;
+  if(!isNullOrWhitespace(temptConfig.lang)) config.dev.lang= temptConfig.lang;
+  if(!isNullOrWhitespace(temptConfig.stylesheet)) config.dev.stylesheet= temptConfig.stylesheet;
+
+  var configFile=true;//flag for using config file
   
 }
 

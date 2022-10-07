@@ -31,3 +31,17 @@ Static site generators are an alternative to content management systems (CMS) â€
 1) Added default stylesheet file
 
 2) When user specifies a folder (./content) tool will convert all files inside this folder into html files and create home page.
+
+3) Allow userto specify a config JSON file to enter options, which overrides other options in command. If anything is missing, the default value will be used instead.
+Example: `simple-ssg1 --config ./testConfig/ssg-config.JSON`
+Content sample:
+```
+{
+  "postsdir": "./content2",
+  "inputPath":"./content2",
+  "outdir": "./dist2",
+  "lang": "ru",
+  "stylesheet": "justALink",
+  "future-feature": "ignore for now"
+}
+```
