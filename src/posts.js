@@ -4,70 +4,24 @@ const fm = require("front-matter");
 const fs = require("fs");
 const marked = require("./marked");
 
-// fs.readFile('../content/silver-blaze.txt', 'utf-8', (err, data) => {
-//   if (err) throw err;
-
-//   // Converting Raw Buffer to text
-//   // data using tostring function.
-//   // console.log(data.split(/\r?\n/));
-// })
-
-var args = process.argv;
+let args = process.argv;
 
 //default is english
-var lang="en";
+let lang="en";
 
 //add the language into args to be use the original desgin while using config file values
-const setLang = () => {
+const setLanguage = () => {
   args.push(config.dev.lang);
-  args.forEach(arg => {
-    if(arg === 'fr') {
-      lang = 'fr';
-    }
-    
-    else if (arg === 'pt-BR') {
-      lang = 'pt-BR';
-    }
-    
-    else if (arg === 'ru') {
-      lang = 'ru';
-    }
-
-    else if (arg === 'uk') {
-      lang = 'uk';
-    }
-
-    else if (arg === 'en-GB') {
-      lang = 'en-GB';
-    }
-
-    else if (arg === 'de') {
-      lang = 'de';
-    }
-
-    else if (arg === 'es') {
-      lang = 'es';
-    }
-
-    else if (arg === 'ja') {
-      lang = 'ja';
-    }
-
-    else if (arg === 'ko') {
-      lang = 'ko';
-    }
-  })
-
+  
+  // language will be set based on the argument passed 
+  lang = args[2];
+  console.log(args);
 };
 
 //default stylesheet
-var stylesheet="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap";
-
 const setStyle = () => {
-  stylesheet=config.dev.stylesheet;
+  stylesheet = config.dev.stylesheet;
 };
-
-
 
 const posthtml = data => `
 <!DOCTYPE html>
@@ -97,7 +51,7 @@ const posthtml = data => `
 `;
 
 const createPost = postPath => {
-  setLang();
+  setLanguage();
   setStyle();
   const data = fs.readFileSync(`${config.dev.postsdir}/${postPath}.txt`, "utf8");
   const content = fm(data);
@@ -107,17 +61,21 @@ const createPost = postPath => {
 };
 
 const createPosts = posts => {
-  setLang();
+  setLanguage();
   setStyle();
   posts.forEach(post => {
-    if (!fs.existsSync(`${config.dev.outdir}/${post.path}`))
+    if (!fs.existsSync(`${config.dev.outdir}/${post.path}`)) {
       fs.mkdirSync(`${config.dev.outdir}/${post.path}`);
+    }
 
     fs.writeFile(
       `${config.dev.outdir}/${post.path}/index.html`,
       posthtml(post),
       e => {
-        if (e) throw e;
+        if (e) {
+          throw e;
+        }
+
         console.log(`${post.path}/index.html was created successfully`);
       }
     );
@@ -125,16 +83,21 @@ const createPosts = posts => {
 };
 
 const createSingle = post => {
-  setLang();
+  setLanguage();
   setStyle();
-  if (!fs.existsSync(`${config.dev.outdir}/${post.path}`))
-      fs.mkdirSync(`${config.dev.outdir}/${post.path}`);
+
+  if (!fs.existsSync(`${config.dev.outdir}/${post.path}`)) {
+    fs.mkdirSync(`${config.dev.outdir}/${post.path}`);
+  }
 
     fs.writeFile(
       `${config.dev.outdir}/${post.path}/index.html`,
       posthtml(post),
       e => {
-        if (e) throw e;
+        if (e) {
+          throw e;
+        }
+
         console.log(`${post.path}/index.html was created successfully`);
       }
     );

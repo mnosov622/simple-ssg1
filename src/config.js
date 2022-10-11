@@ -13,7 +13,7 @@ const config = {
 
 
 //chelc if it's just null or whitespace 
-function isNullOrWhitespace( input ) {
+function isNullOrWhitespace(input) {
   return !input || !input.trim();
 }
 
@@ -26,19 +26,36 @@ const setConfig = (argvConfig) => {
   
   //read the parse the config file
   const configString = fs.readFileSync(argvConfig).toString();
+
   try { 
-    var temptConfig = JSON.parse(configString);
-  }catch(err) {
-    console.log("Please make sure the JSON file is valid. Encountered an issue: "+err);
+    let temptConfig = JSON.parse(configString);
+  }
+  
+  catch(err) {
+    console.log("Please make sure the JSON file is valid. Encountered an issue: " + err);
     return 0;
   }
   
   //checking if each option exist from the config file before assiging to confgi module
-  if(!isNullOrWhitespace(temptConfig.postsdir)) config.dev.postsdir = temptConfig.postsdir;
-  if(!isNullOrWhitespace(temptConfig.inputPath)) config.dev.inputPath = temptConfig.inputPath;
-  if(!isNullOrWhitespace(temptConfig.outdir)) config.dev.outdir = temptConfig.outdir;
-  if(!isNullOrWhitespace(temptConfig.lang)) config.dev.lang= temptConfig.lang;
-  if(!isNullOrWhitespace(temptConfig.stylesheet)) config.dev.stylesheet= temptConfig.stylesheet;
+  if(!isNullOrWhitespace(temptConfig.postsdir)) {
+    config.dev.postsdir = temptConfig.postsdir;
+  }
+
+  if(!isNullOrWhitespace(temptConfig.inputPath)) {
+    config.dev.inputPath = temptConfig.inputPath;
+  }
+
+  if(!isNullOrWhitespace(temptConfig.outdir)) {
+    config.dev.outdir = temptConfig.outdir
+  }
+
+  if(!isNullOrWhitespace(temptConfig.lang)) {
+    config.dev.lang= temptConfig.lang;
+  }
+
+  if(!isNullOrWhitespace(temptConfig.stylesheet))  {
+    config.dev.stylesheet= temptConfig.stylesheet;
+  }
   
   return true;
 }

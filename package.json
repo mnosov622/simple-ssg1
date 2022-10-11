@@ -16,6 +16,7 @@
     "front-matter": "^3.2.1",
     "highlight.js": "^9.18.5",
     "marked": "^0.8.2",
-    "minimist": "^1.2.6"
+    "minimist": "^1.2.6",
+    "nodedev": "^0.0.1"
   }
 }

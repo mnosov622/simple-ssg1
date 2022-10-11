@@ -6,7 +6,7 @@ marked.setOptions({
     const hljs = require("highlight.js");
     const validLanguage = hljs.getLanguage(language) ? language : "plaintext";
     return hljs.highlight(validLanguage, code).value;
-  },
+  },  
   pedantic: false,
   gfm: true,
   breaks: false,

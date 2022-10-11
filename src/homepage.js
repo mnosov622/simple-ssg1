@@ -1,18 +1,6 @@
 const configModule = require("./config");
 const config = configModule.config;
 const fs = require("fs");
-//const postMethods = require("./posts");
-
-// ${posts
-//   .map(
-//     post => `<div class="post">
-//     <h3><a href="./${post.path}">${
-//       post.attributes.title
-//     }</a></h3>
-//       <p>${post.attributes.description}</p>
-//     </div>`
-//   )
-//   .join("")}
 
 const homepage = posts => `
 <!DOCTYPE html>
@@ -51,7 +39,9 @@ const homepage = posts => `
 
 const addHomePage = posts => {
   fs.writeFile(`${config.dev.outdir}/index.html`, homepage(posts), e => {
-    if (e) throw e;
+    if (e) {
+        throw e;
+    }
     console.log(`index.html was created successfully`);
   });
 };
