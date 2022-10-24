@@ -1,25 +1,124 @@
 
 body {
-    background-color: rgb(203 234 255);
+    background-color: rgb(60, 143, 198);
     font-weight: 400;
     font-size: 20px;
     font-family: 'Open-Sans', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+/* a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+    width: 20%;
+    height: 2px;
+    opacity: 0;
+    transition: all .4s ease-in;
+}
+
+a:hover::after {
+    width: 100%;
+    opacity: 1;
+} */
+
 .content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+    color: azure;
 }
 
+
 .posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.posts__post {
     background-color: aliceblue;
+    margin-bottom: 10px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.3);
+    height: 50px;
+    width: 300px ;
+    transition: all .3s ease-in;
+}
+
+.posts__post-link {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.posts__post:hover {
+    transform: scale(1.025) translateY(-2px);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
 }
 
 .posts > * {
     display: flex;
     justify-content: center;
-    padding: 1%;
+    margin: 1%;
     text-decoration: none;
-    width: 100%;
+}
+
+.dark {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.btn-toggler {
+    position: absolute;
+    right: 40px;
+    top: 10px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    transition: all .2s ease-in;
+}
+
+.btn-toggler:hover {
+    background-color: gray;
+}
+
+.light {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 1;
+    display: none;
+}
+
+
+.dark-mode {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.cards__dark-mode {
+    background-color: rgb(7, 37, 62);
+    color: #fff;
+}
+
+.content-dark-mode {
+    color: #fff;
 }

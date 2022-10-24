@@ -121,3 +121,4 @@ if (args.length === 2) {
   console.log('You didn\'t specify any flag\n\nUse simple-ssg1 -h for help');
   return -1;
 }
+
