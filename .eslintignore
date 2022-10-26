@@ -1,0 +1,7 @@
+node_modules
+debug.log
+LICENSE.md
+CONTRIBUTING.md
+package.json
+package-lock.json
+testConfig

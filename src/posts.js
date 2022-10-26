@@ -4,16 +4,17 @@ const fm = require("front-matter");
 const fs = require("fs");
 const marked = require("./marked");
 
+// eslint-disable-next-line no-undef
 let args = process.argv;
-
+let stylesheet;
 //default is english
-let lang="en";
+let lang = "en";
 
 //add the language into args to be use the original desgin while using config file values
 const setLanguage = () => {
   args.push(config.dev.lang);
-  
-  // language will be set based on the argument passed 
+
+  // language will be set based on the argument passed
   lang = args[2];
   console.log(args);
 };
@@ -23,7 +24,7 @@ const setStyle = () => {
   stylesheet = config.dev.stylesheet;
 };
 
-const posthtml = data => `
+const posthtml = (data) => `
 <!DOCTYPE html>
 <html lang="${lang}">
     <head>
@@ -59,20 +60,23 @@ const posthtml = data => `
 </html>
 `;
 
-const createPost = postPath => {
+const createPost = (postPath) => {
   setLanguage();
   setStyle();
-  const data = fs.readFileSync(`${config.dev.postsdir}/${postPath}.txt`, "utf8");
+  const data = fs.readFileSync(
+    `${config.dev.postsdir}/${postPath}.txt`,
+    "utf8"
+  );
   const content = fm(data);
   content.body = marked(content.body);
   content.path = postPath;
   return content;
 };
 
-const createPosts = posts => {
+const createPosts = (posts) => {
   setLanguage();
   setStyle();
-  posts.forEach(post => {
+  posts.forEach((post) => {
     if (!fs.existsSync(`${config.dev.outdir}/${post.path}`)) {
       fs.mkdirSync(`${config.dev.outdir}/${post.path}`);
     }
@@ -80,7 +84,7 @@ const createPosts = posts => {
     fs.writeFile(
       `${config.dev.outdir}/${post.path}/index.html`,
       posthtml(post),
-      e => {
+      (e) => {
         if (e) {
           throw e;
         }
@@ -91,7 +95,7 @@ const createPosts = posts => {
   });
 };
 
-const createSingle = post => {
+const createSingle = (post) => {
   setLanguage();
   setStyle();
 
@@ -99,18 +103,18 @@ const createSingle = post => {
     fs.mkdirSync(`${config.dev.outdir}/${post.path}`);
   }
 
-    fs.writeFile(
-      `${config.dev.outdir}/${post.path}/index.html`,
-      posthtml(post),
-      e => {
-        if (e) {
-          throw e;
-        }
-
-        console.log(`${post.path}/index.html was created successfully`);
+  fs.writeFile(
+    `${config.dev.outdir}/${post.path}/index.html`,
+    posthtml(post),
+    (e) => {
+      if (e) {
+        throw e;
       }
-    );
-}
+
+      console.log(`${post.path}/index.html was created successfully`);
+    }
+  );
+};
 
 module.exports = {
   createPost: createPost,

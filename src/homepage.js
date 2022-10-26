@@ -2,7 +2,7 @@ const configModule = require("./config");
 const config = configModule.config;
 const fs = require("fs");
 
-const homepage = posts => `
+const homepage = () => `
 <!DOCTYPE html>
 <html lang="${config.dev.lang}">
     <head>
@@ -52,12 +52,12 @@ const homepage = posts => `
 </html>
 `;
 
-const addHomePage = posts => {
-  fs.writeFile(`${config.dev.outdir}/index.html`, homepage(posts), e => {
+const addHomePage = (posts) => {
+  fs.writeFile(`${config.dev.outdir}/index.html`, homepage(posts), (e) => {
     if (e) {
-        throw e;
+      throw e;
     }
-    console.log(`index.html was created successfully`);
+    console.log("index.html was created successfully");
   });
 };
 

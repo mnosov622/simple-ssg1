@@ -7,7 +7,10 @@
     "simple-ssg1": "./src/index.js"
   },
   "scripts": {
-    "build": "node ./src/index.js"
+    "build": "node ./src/index.js",
+    "prettier": "npx prettier --write .",
+    "prettier-check": "npx prettier --check .",
+    "eslint": "npx eslint ."
   },
   "keywords": [],
   "author": "",
@@ -18,5 +21,9 @@
     "marked": "^0.8.2",
     "minimist": "^1.2.6",
     "nodedev": "^0.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "prettier": "2.7.1"
   }
 }

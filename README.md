@@ -11,30 +11,30 @@ Static site generators are an alternative to content management systems (CMS) â€
 3. cd to project folder
 4. run `npm install`
 
-
 # Options
 
-1) `--help` or `-h` to display the usage information
+1. `--help` or `-h` to display the usage information
 
-2) Run `--version` or `-v` to display the tool name and version
+2. Run `--version` or `-v` to display the tool name and version
 
-3) Run `simple-ssg1 [name of the file]` to conver file from txt to html.
+3. Run `simple-ssg1 [name of the file]` to conver file from txt to html.
 
 # Examples
 
-1) `simple-ssg1 ./content` (convert all files inside content folder into html)
+1. `simple-ssg1 ./content` (convert all files inside content folder into html)
 
-2) `simple-ssg1 silver-blaze` (upper case or lower case, will convert single file into html)
+2. `simple-ssg1 silver-blaze` (upper case or lower case, will convert single file into html)
 
 # Optional Features
 
-1) Added default stylesheet file
+1. Added default stylesheet file
 
-2) When user specifies a folder (./content) tool will convert all files inside this folder into html files and create home page.
+2. When user specifies a folder (./content) tool will convert all files inside this folder into html files and create home page.
 
-3) Allow userto specify a config JSON file to enter options, which overrides other options in command. If anything is missing, the default value will be used instead.
-Example: `simple-ssg1 --config ./testConfig/ssg-config.JSON`
-Content sample:
+3. Allow userto specify a config JSON file to enter options, which overrides other options in command. If anything is missing, the default value will be used instead.
+   Example: `simple-ssg1 --config ./testConfig/ssg-config.JSON`
+   Content sample:
+
 ```
 {
   "postsdir": "./content2",

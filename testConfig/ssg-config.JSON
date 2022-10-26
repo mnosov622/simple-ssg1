@@ -1,6 +1,6 @@
 {
   "postsdir": "./content2",
-  "inputPath":"./content2",
+  "inputPath": "./content2",
   "outdir": "./dist2",
   "lang": "ru",
   "stylesheet": "justALink",
