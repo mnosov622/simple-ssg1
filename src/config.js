@@ -63,4 +63,5 @@ const setConfig = (argvConfig) => {
 module.exports = {
   config: config,
   setConfig: setConfig,
+  isNullOrWhitespace,
 };

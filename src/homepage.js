@@ -61,4 +61,4 @@ const addHomePage = (posts) => {
   });
 };
 
-module.exports = addHomePage;
+module.exports = { addHomePage, homepage };

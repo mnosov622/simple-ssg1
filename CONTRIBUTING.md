@@ -107,4 +107,28 @@ npm run eslint
 
 ---
 
+# Testing
+
+To test the tool run
+
+```
+npm run test
+```
+
+To run single test:
+
+replace `test` command with `test.only`
+
+To test single file, run :
+
+```
+npm test <name of the file>
+```
+
+To run watch mode:
+
+```
+npm test --watchAll
+```
+
 ### WE APPRECIATE YOUR CONTRIBUTION! ❤️

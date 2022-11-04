@@ -18,7 +18,10 @@ var configFile = false;
 function createDirIfNotExists() {
   if (!fs.existsSync(config.dev.outdir)) {
     fs.mkdirSync(config.dev.outdir);
+    return 0;
   }
+
+  return 1;
 }
 
 if (minArgv.config || minArgv.c) {
@@ -104,3 +107,5 @@ if (args.length === 2) {
   console.log("You didn't specify any flag\n\nUse simple-ssg1 -h for help");
   return -1;
 }
+
+module.exports = createDirIfNotExists;

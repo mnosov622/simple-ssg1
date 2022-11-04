@@ -16,15 +16,17 @@ const setLanguage = () => {
 
   // language will be set based on the argument passed
   lang = args[2];
-  console.log(args);
+  return lang;
 };
 
 //default stylesheet
 const setStyle = () => {
   stylesheet = config.dev.stylesheet;
+  return stylesheet;
 };
 
-const posthtml = (data) => `
+const posthtml = (data) =>
+  `
 <!DOCTYPE html>
 <html lang="${lang}">
     <head>
@@ -61,16 +63,20 @@ const posthtml = (data) => `
 `;
 
 const createPost = (postPath) => {
+  if (!postPath) return;
+
   setLanguage();
   setStyle();
   const data = fs.readFileSync(
     `${config.dev.postsdir}/${postPath}.txt`,
     "utf8"
   );
+
   const content = fm(data);
   content.body = marked(content.body);
   content.path = postPath;
-  return content;
+  console.log(content);
+  return content.body;
 };
 
 const createPosts = (posts) => {
@@ -81,6 +87,7 @@ const createPosts = (posts) => {
       fs.mkdirSync(`${config.dev.outdir}/${post.path}`);
     }
 
+    if (post.path === "undefined") return;
     fs.writeFile(
       `${config.dev.outdir}/${post.path}/index.html`,
       posthtml(post),
@@ -88,7 +95,6 @@ const createPosts = (posts) => {
         if (e) {
           throw e;
         }
-
         console.log(`${post.path}/index.html was created successfully`);
       }
     );
@@ -96,6 +102,7 @@ const createPosts = (posts) => {
 };
 
 const createSingle = (post) => {
+  if (!post) return;
   setLanguage();
   setStyle();
 
@@ -110,14 +117,15 @@ const createSingle = (post) => {
       if (e) {
         throw e;
       }
-
-      console.log(`${post.path}/index.html was created successfully`);
+      // console.log(`${post.path}/index.html was created successfully`);
     }
   );
+  return 0;
 };
 
 module.exports = {
   createPost: createPost,
   createPosts: createPosts,
   createSingle: createSingle,
+  posthtml,
 };
