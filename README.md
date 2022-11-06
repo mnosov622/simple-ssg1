@@ -6,10 +6,15 @@ Static site generators are an alternative to content management systems (CMS) â€
 
 # How to get started ?
 
-1. Fork github repo
-2. Clone your github repo
+1. Download tool using npm :
+
+```
+npm i simple-ssg1
+```
+
+2. Run npm i
+
 3. cd to project folder
-4. run `npm install`
 
 # Options
 
