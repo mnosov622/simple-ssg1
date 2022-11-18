@@ -1,6 +1,6 @@
 const { createPosts, createPost, createSingle } = require("../posts");
 
-const { isNullOrWhitespace } = require("../config");
+const { isNullOrWhitespace, setConfig } = require("../config");
 
 const configModule = require("../config");
 const config = configModule.config;
@@ -16,8 +16,24 @@ describe("posts tests", () => {
     );
   });
 
+  test("check if lang is set to default", () => {
+    expect(config.dev.lang).toBe("en");
+  });
+
+  test("if invalid json is passed, expect false", () => {
+    expect(setConfig("invalid_file")).toBeFalsy();
+  });
+
   test("if data is passed, expect false", () => {
     expect(isNullOrWhitespace("test data")).toBeFalsy();
+  });
+
+  test("if null is passed, expect true", () => {
+    expect(isNullOrWhitespace(null)).toBeTruthy();
+  });
+
+  test("if whitespace is passed, expect true", () => {
+    expect(isNullOrWhitespace(" ")).toBeTruthy();
   });
 });
 
