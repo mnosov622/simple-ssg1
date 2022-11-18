@@ -53,11 +53,11 @@ const homepage = () => `
 `;
 
 const addHomePage = (posts) => {
+  if (!posts) return false;
   fs.writeFile(`${config.dev.outdir}/index.html`, homepage(posts), (e) => {
     if (e) {
       throw e;
     }
-    console.log("index.html was created successfully");
   });
 };
 
